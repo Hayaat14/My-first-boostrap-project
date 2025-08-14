@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Happy Tails</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+
+     
+ body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #b6aab4;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.light-mode .navbar-custom {
+      background-color: #f8f9fa;
+      color: #000;
+
+    }
+
+    body.dark-mode .navbar-custom {
+      background-color: #201c29;
+      color: #fff;
+
+    }
+
+    .navbar {
+
+      display: flex;
+      border: 0;
+      outline: none;
+      position: relative;
+    }
+
+    .navbar-glow-border {
+
+      border: 2px;
+      position: relative;
+
+
+    }
+
+    .navbar-glow-border::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid rgba(40, 12, 38, 0.6);
+      border-radius: inherit;
+      box-shadow: 0 0 10px rgba(40, 12, 38, 0.6), 0 0 20px rgba(40, 12, 38, 0.6);
+      z-index: -1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-glow-border:hover::after {
+      box-shadow: 0 0 20px rgba(30, 2, 41, 0.6), 0 0 80px rgba(30, 2, 41, 0.6);
+    }
+
+    .navbar-brand img {
+
+      /* transition: transform 0.3s ease;*/
+      animation: spin 3s linear infinite;
+
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    /*    .navbar-brand img:hover {
+
+      transform: rotate(100deg);
+    } */
+
+    .nav-link {
+
+      color: white;
+      transition: color 0.3s ease;
+      display: flex;
+
+    }
+
+    .nav-link:hover {
+
+      color: rgb(123, 83, 123) !important;
+
+      font-weight: bolder;
+
+    }
+
+    .navbar-custom {
+
+      position: relative;
+    }
+
+
+    .navbar-brand-text {
+      display: inline-block;
+      position: relative;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid transparent;
+      width: 100%;
+      animation:
+        typing 7s,
+        cursor .4s step-end alternate;
+    }
+
+    @keyframes cursor {
+
+
+      50% {
+        border-color: transparent;
+      }
+
+    }
+
+    @keyframes typing {
+
+      from {
+        width: 0
+      }
+
+
+    }
+
+    .image-container img {
+      margin: 0;
+      padding: 0;
+
+
+    }
+
+
+    .navbar-toggler {
+      border-color: #efe0e0;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(225,225,225,0.1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      cursor: pointer;
+      display: flex;
+
+
+    }
+
+    .navbar-nav {
+
+      right: 1%;
+      bottom: 2%;
+
+    }
+
+    .search-bar {
+      transition: all 0.3s ease;
+      display: flex;
+      border-radius: 20px;
+      border-color: #450b53;
+
+
+    }
+
+    .search-bar:hover {
+      border-color: #6f42c1;
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 5px rgba(126, 122, 133, 0.7);
+    }
+
+    .btn-purple {
+      background-color: rgba(132, 114, 165, 0.5);
+      color: rgb(34, 5, 32);
+      border-radius: 10px;
+      box-shadow: 0 0px 5px rgba(126, 122, 133, 0.5);
+      border: 0;
+      outline: none;
+      font-weight: bold;
+
+
+    }
+
+    .btn-purple:hover {
+      transform: scale(1.1);
+
+    }
+.navbar-nav {
+      text-align: left;
+    }
+  
+
+
+
+
+    
+
+
+    .border {
+
+      padding: clamp(5px, 5%, 5px);
+      margin: clamp(5px, 2%, 10px);
+
+
+    }
+
+    .sub-subtag {
+
+      background-color: #000000;
+      border-radius: 50%;
+      width: 100%;
+      /* let it fill the column */
+      aspect-ratio: 1 / 1;
+      /* keeps it a perfect circle */
+      max-width: 150px;
+      overflow: hidden;
+      margin: auto;
+      position: relative;
+
+
+
+    }
+
+    .sub-subtag img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+
+    }
+
+    .sub-subtag:hover {
+      transform: scale(1.1);
+    }
+
+    .ball_images {
+      border: 5px dashed #470d4b;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transform: scale(1.1);
+
+    }
+
+    .ball_images::after {
+
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid rgba(55, 7, 51, 0.6);
+      border-radius: inherit;
+      box-shadow: 0 0 20px rgba(51, 3, 41, 0.872), 0 0 60px rgba(0, 0, 0, 0.6);
+      z-index: -1;
+      
+
+
+
+    }
+
+    .ball_images:hover::after {
+
+      box-shadow: 0 0 20px rgba(94, 42, 94, 0.6), 0 0 60px rgba(48, 2, 48, 0.6), 0 0 80px rgba(255, 80, 255, 0.6);
+transform: scale(1.1);
+    }
+
+
+
+
+    .name_1 {
+
+      margin-top: 10px;
+      color: rgb(255, 255, 255);
+      font-size: 1rem;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .name_1:hover {
+
+      color: rgb(130, 31, 130);
+      transform: scale(1.2);
+      font-weight: bold;
+      transition: all 0.3s ease;
+
+
+    }
+
+    .glow-border {
+
+      border: 2px;
+      position: relative;
+    
+
+    }
+
+    .glow-border::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid rgba(14, 2, 13, 0.6);
+      border-radius: inherit;
+      box-shadow: 0 0 20px rgba(14, 2, 13, 0.6), 0 0 20px rgba(14, 2, 13, 0.6);
+      z-index: -1;
+
+    }
+
+    .glow-border:hover::after {
+      box-shadow: 0 0 50px rgba(201, 23, 201, 0.6), 0 0 80px rgba(255, 0, 255, 0.6);
+    }
+
+
+    .line_break {
+
+      color: #000;
+      height: 50%;
+
+    }
+
+    .glow-border_2 {
+
+      border: 4px;
+      position: relative;
+
+    }
+
+    .glow-border_2::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 4px solid rgba(77, 1, 70, 0.6);
+      border-radius: inherit;
+      box-shadow: 0 0 20px rgba(169, 24, 126, 0.6), 0 0 20px rgba(14, 2, 13, 0.6);
+      z-index: -1;
+
+    }
+
+    .glow-border_2:hover::after {
+      box-shadow: 0 0 50px rgba(207, 55, 207, 0.6);
+
+
+
+    }
+
+
+    #sub_sec_2 {
+
+      width: 150%;
+      height: 100%;
+
+
+    }
+
+
+    .corousel-sec_2 {
+
+      justify-content: flex-start;
+      display: inline-flex;
+      align-content: flex-start;
+      border: #470d4b;
+      justify-items: center;
+      display: inline-flex;
+      align-items: center;
+
+
+    }
+
+    #carouselExampleFade {
+
+
+      width: 100%;
+      height: 80%;
+      object-fit: cover;
+      justify-items: center;
+      display: inline-flex;
+      align-items: center;
+
+
+    }
+
+    .glow-border_3 {
+
+      border: 4px;
+      position: relative;
+
+    }
+
+    .glow-border_3::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 4px solid rgba(77, 1, 70, 0.6);
+      border-radius: inherit;
+      box-shadow: 0 0 20px rgba(109, 29, 81, 0.6), 0 0 20px rgba(14, 2, 13, 0.6);
+      z-index: -1;
+
+    }
+
+    .glow-border_3:hover::after {
+    
+      box-shadow:0px 0px 80px rgba(207, 55, 207, 0.6);
+
+
+
+    }
+
+    #H_1 {
+
+
+      transform: scale(1.1);
+      color: rgb(100, 91, 97);
+text-shadow: 0 0 20px #a06fad,0 0 50px #a749be,0 0 80px #894b98;
+
+    }
+
+    #H_1:hover {
+
+      color: rgb(95, 40, 86);
+      transform: scale(1.3);
+      font-weight: bold;
+      transition: all 0.3s ease;
+
+
+    }
+
+    #H_3 {
+
+      font-size: 1.5rem;
+    
+
+    }
+
+    .circle_space {
+
+      display: inline-flex;
+
+
+    }
+
+
+    .spot-head {
+
+      color: #f2d9ed;
+
+    }
+
+    .spot-head:hover {
+
+      color: #450b53;
+      transform: scale(1.1);
+      transition: all 0.3s ease;
+    }
+
+    .texts {
+
+      color: #573b5e;
+    }
+
+    .texts:hover {
+
+      color: #f5cdef;
+      transition: all 0.4s ease;
+
+    }
+
+    .btn {
+
+      border-radius: 30%;
+      background-color: #9284ad;
+
+    }
+
+
+
+    .line_break_2 {
+
+      color: #470d4b;
+
+
+    }
+
+    .section-title {
+
+
+      color: #4c0c3e;
+
+      display: inline-block;
+      font-size: 3rem;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-shadow: 0 0 20px #cc56b3, 0 0 50px#783469, 0 0 80px#8f5181;
+    }
+
+    .last_text {
+
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    .little-informative {
+
+      color: #632b68;
+      text-shadow:0 0 20px #8c6496,0 0 50px #a749be,0 0 80px #8c6496;
+      font-size: 1.3rem;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      
+      
+
+    }
+
+    .little-informative_2 {
+font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #ffffff;
+    text-shadow: 0 0 20px#ac57a6,0 0 50px white, 0 0 80px rgb(221, 145, 221);
+    }
+
+    .features-12 {
+
+
+  color: #3b0731;
+
+    }
+
+
+
+.navbar-nav {
+      text-align: left;
+    }
+  
+
+    form.d-flex {
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .navbar-nav .nav-link {
+      margin-bottom: 5px;
+
+    }
+
+    @media (min-width: 1050px) {
+      .navbar-nav {
+        flex-direction: row;
+        /* Align links horizontally on larger screens */
+      }
+
+      form.d-flex {
+        justify-content: flex-end;
+        /* Align search bar to the right on larger screens */
+      }
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-custom navbar-glow-border" style="background-color: #201c29">
+    <div class="container-fluid px-3 justify-content-between">
+
+
+
+
+      <div class="background-image"></div>
+      <a class="navbar-brand me-auto " href="#">
+        <img src="/Images/logo.jpg" alt="Petlogo" width="100" height="100">
+
+        <span class="navbar-brand-text ms-0 pt-2 fs-2 animated">
+          Happy Tails</span>
+      </a>
+
+
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse m-0 p-0 justify-content-end" id="navbarScroll">
+        <ul class="navbar-nav  ms-6 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/index.html"> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="/contact.html">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white  " href="/gallery.html" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Gallery </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/catpage.html">Cats</a></li>
+              <li><a class="dropdown-item" href="/dogspage.html">Dogs</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="/about.html">About Us</a>
+          </li>
+          <li>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2  search-bar" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn-purple" type="submit">Search</button>
+            </form>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <section>
+
+    <div class="  border glow-border my-2">
+
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
+        <div class="col-md-6 p-lg-3 mx-auto ">
+          <h1 class="display-3 fw-bold" id="H_1">Explore. Learn. Adopt.</h1>
+          <hr>
+          </hr>
+          <h3 class="fw-normal text-muted mb-3" id="H_3">From learning to adopting — all in one place.</h3>
+          <!-- <div class="d-flex  justify-content-center lead fw-normal">
+            <svg class="bi" aria-hidden="true">
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+            <svg class="bi" aria-hidden="true">
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </div>-->
+        </div>
+        <hr class="line_break_2">
+        </hr>
+        <div class="container circle_space  d-flex justify-content-center gap-5">
+          <div class="col-lg-4 ">
+            <img aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140" width="140"
+              src="Images/spot2.png">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+
+            <h2 class="fw-normal  spot-head ">FurHome</h2>
+            <p class="texts">"A web platform that connects shelters with potential pet adopters. Users can browse
+              pets, read profiles, and apply for adoption online."</p>
+            <a href="https://github.com/your-pet-adoption-portal" class="btn  mt-2">View Project</a>
+
+          </div>
+
+
+          <div class="col-lg-4 ">
+            <img aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140" width="140"
+              src="Images/spot1.png">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            <h2 class="fw-normal spot-head ">PawFacts</h2>
+            <p class="texts">"Explore interesting facts about animals with this interactive site. Browse by species and
+              learn about habitats."</p>
+            <a href="https://github.com/your-animal-facts-app" class="btn  mt-2">View Project</a>
+
+          </div>
+        </div>
+
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+      </div>
+
+      <hr class="line_break_2">
+      </hr>
+
+
+      <div class="container">
+        <p class=" justify-content-center fw-bold section-title">Meet Our Featured Animals</p>
+      </div>
+
+
+      <div class=" row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 p-5  justify-content-center">
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="furry_rabbit">
+          <div class="sub-subtag"><img src="Images/rabbit.jpg" class="img-fluid"></div>
+          <p class=name_1>Rabbit</p>
+
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="pretty_cat">
+          <div class="sub-subtag"><img src="Images/fluffy_grey_cat.jpg " class="img-fluid"></div>
+          <p class="name_1">Cat</p>
+
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="Siberian_Husky">
+          <div class="sub-subtag"><img src="Images/siberian husky.jpg" class="img-fluid"></div>
+          <p class="name_1">Siberian Husky</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="white_goat">
+          <div class="sub-subtag"><img src="Images/goat.jpg" class="img-fluid"></div>
+          <p class="name_1">Goat</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="mow_cow">
+          <div class="sub-subtag"> <img src="Images/22MINI-COWS-qghp-superJumbo.webp" class="img-fluid"></div>
+          <p class="name_1">cow</p>
+        </div>
+
+        <div class="col ball_images img-glow-border  p-3 m-1" id="Eagle_.">
+          <div class="sub-subtag"> <img src="Images/eagle.jpg" class="img-fluid"></div>
+          <p class="name_1">Eagle</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="Fluffy_chiken">
+          <div class="sub-subtag"><img src="Images/fluffy chicken.jpg" class="img-fluid"></div>
+          <p class=name_1>Fluffy Chicken</p>
+        </div>
+
+        <div class="col ball_images img-glow-border  p-3 m-1" id="German_Shepherd">
+          <div class="sub-subtag"> <img src="Images/german shepherd.jpg" class="img-fluid"></div>
+          <p class="name_1">German Shepherd</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="Snowy_Wolf">
+          <div class="sub-subtag"> <img src="Images/Rocky-mountain-wolf.png" class="img-fluid"></div>
+          <p class="name_1">Mountainous Wolf</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="Rooster">
+          <div class="sub-subtag"><img src="Images/rooster.jpg" class="img-fluid"></div>
+          <p class="name_1">Rooster</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="hens">
+          <div class="sub-subtag"> <img src="Images/Hen.jpg" class="img-fluid"></div>
+          <p class="name_1">Hens</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="majestic_deer">
+          <div class="sub-subtag"><img src="Images/baby-deer.jpg" class="img-fluid"></div>
+          <p class="name_1">Deer</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="mountainous_goat">
+          <div class="sub-subtag"><img src="Images/mountainous goat.jpg" class="img-fluid"></div>
+          <p class="name_1">Mountainous Goat</p>
+        </div>
+
+        <div class="col ball_images img-glow-border p-3 m-1" id="tiny_sparrow">
+          <div class="sub-subtag"> <img src="Images/sparrow.jpg"></div>
+          <p class="name_1">Sparrow</p>
+        </div>
+
+        <div class=" col ball_images img-glow-border p-3 m-1" id="Green_Parrot">
+          <div class="sub-subtag"> <img src="Images/blue ringneck.jpg" class="img-fluid"></div>
+          <p class="name_1"> RingNeck</p>
+        </div>
+
+
+      </div>
+
+      <span class="justify-content-center d-flex mt-4 fw-bold last_text">More will be update soon</span>
+    </div>
+
+
+
+    <div class="line_break">
+      <hr>
+      <hr>
+    </div>
+
+    <div class="container corousel-sec_2 justify-content-center d-flex">
+    <div class=" border glow-border_2 row g-0 align-items-center " id="sub_sec_2">
+
+      <div class="col-md-6 mb-4 mb-md-0">
+       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="Images/animals garden-1.jpg" class="d-block w-100" alt="animals">
+            </div>
+            <div class="carousel-item">
+              <img src="Images/horses being cared.jpeg" class="d-block w-100" alt="animals">
+            </div>
+            <div class="carousel-item">
+              <img src="Images/human-animal interaction.jpeg" class="d-block w-100" alt="animals">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        </div>
+
+         <span class=" col-md-6 px-4">
+        <p class=" fs-5 little-informative ">At Happy Tails, we believe in
+          more than just adoption — we believe in compassion, connection, and care. Our journey begins in vibrant garden
+          where dogs run freely, continues with the wonders of nature as animals hydrate and explore, and thrives With
+          dedicated caretakers who ensure every creature feels safe and loved. This site reflects that mission —
+          blending
+          fact, story, and heart in every section.
+        </p>
+      </span>
+
+        </div>
+
+      
+   
+    </div>
+
+
+
+
+    <div class="container glow-border_3 my-4  ">
+    
+
+      <div class="row mb-4  ">
+        <div class="col-md-6 ">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis">Wildlife Wonders</strong>
+              <h3 class="mb-0 features-12">The Gift of Gab: Meet the Most Talkative Parrot!</h3>
+              <div class="mb-1 text-body-secondary">Nov 12</div>
+              <p class="card-text mb-auto little-informative_2">This parrot is not only known for its vibrant plumage but also for its
+                unparalleled ability to mimic human speech. Widely regarded as one of the most talkative species in the
+                animal kingdom, this bird brings joy to many households with its unique vocal skills. .</p>
+              <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#chevron-right"></use>
+                </svg>
+              </a>
+            </div>
+
+            <div class="col-auto d-none d-lg-block">
+              <img class="bd-placeholder-img img-fluid rounded m-4" height="150" width="180" src="Images/talkative parrot.jpg" alt="">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-6 ">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success-emphasis">Rare Beauties</strong>
+              <h3 class="mb-0 features-12">A Glimpse of Elegance: The Rarest Cat Breed</h3>
+              <div class="mb-1 text-body-secondary">Nov 11</div>
+              <p class="mb-auto little-informative_2" >This magnificent and rare cat breed is known for its striking appearance and graceful
+                demeanor. With fewer than a few hundred left in the world, it is considered one of the rarest felines on
+                the planet.</p>
+              <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#chevron-right"></use>
+                </svg>
+              </a>
+            </div>
+
+            <div class="col-auto d-none d-lg-block">
+              <img class="bd-placeholder-img  img-fluid rounded m-4 " height="250" width="200" src="Images/beautiful cat.jpg" alt="">
+               
+    
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+   
+  </section>
+
+  <footer class=" container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p>
+    <a href="/"
+      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+      aria-label="Bootstrap">
+      <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+        <use xlink:href="#bootstrap"></use>
+      </svg> </a>
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+    </ul>
+  </footer>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>
